@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>registration</title>
+</head>
+<body>
+<div align= left">
+    <img src="free.png">
+</div>
+<h1 align="center" style="color:Tomato">Register now! </h1>
+
+<form action="/user" method="post" align="center">
+    <p><br/>
+    <p> Please enter a username and password: <br/>
+        <label align="center" for="userName">User name: </label> <input id="userName" name="userName" type="text"> <br/>
+        <label align="center" for="password">Password: </label> <input password="password" name="password"
+                                                                       type="password"> <br/>
+        <input type="submit" value="Save"> <br/>
+</form>
+<form action="/user" method="get" align="center">
+    <p> Please enter a UUID to find a user: <br/>
+        <label align="right" for="UUID">UUID: </label> <input id="UUID" name="UUID" type="text"> <br/>
+        <input type="submit" value="Find"> <br/>
+        <a href="/user/all">Show all Users</a> <br/>
+        <a href="/post/all">Show all Posts without registration</a>
+</form>
+
+</body>
+</html>
