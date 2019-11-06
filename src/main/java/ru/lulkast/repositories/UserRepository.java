@@ -1,15 +1,7 @@
 package ru.lulkast.repositories;
 
+import org.springframework.data.repository.CrudRepository;
 import ru.lulkast.models.User;
 
-import java.sql.SQLException;
-import java.util.Set;
-import java.util.UUID;
-
-public interface UserRepository {
-    User findByUUID(UUID uuid) ;
-
-    User saveUser(User user) ;
-
-    Set<User> findAll() ;
+public interface UserRepository extends CrudRepository<User, String> {
 }

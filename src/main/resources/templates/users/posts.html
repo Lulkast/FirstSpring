@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>All posts</title>
+    <title>All ads</title>
 </head>
 <body>
 
     <img th:src="@{/free.png}">
 
-<div th:each="post : ${posts}">
-    <h3 th:text="${post.userName + ' оставил запись'}" />
-    <h3 th:text="${post.date}"/>
-    <h3 th:text="${post.subject}"/>
-    <img th:src="${post.foto}" alt="Письма мастера дзен">
+<div th:each="ad : ${ads}">
+    <h3 th:text="${ad.userName + ' оставил запись'}" />
+    <h3 th:text="${ad.date}"/>
+    <h3 th:text="${ad.subject}"/>
+    <img th:src="${ad.foto}" alt="Письма мастера дзен">
 </div>
 <a href="/">go to main</a>
 

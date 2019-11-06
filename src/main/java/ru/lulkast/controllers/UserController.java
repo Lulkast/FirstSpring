@@ -4,10 +4,10 @@ import org.springframework.ui.Model;
 
 public interface UserController {
 
-    String getUserById(String id, Model model) throws Exception;
+    String getById(String id, Model model) throws Throwable;
 
-    String saveUser(String userName, String password, Model model) throws Exception;
+    String save(String userName, String password, Model model) throws  Throwable;
 
-    String getAllUsers(Model model) throws Exception;
+    String getAll(Model model) throws Throwable;
 
 }

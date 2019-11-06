@@ -1,9 +1,6 @@
 package ru.lulkast.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,22 +8,24 @@ import javax.persistence.Table;
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
+@Table(name = "AdNeo")
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
 @ToString
-@Entity
-@Table(name = "AD")
 public class Ad {
-    @Id
-    final String id;
-    final String userName;
-    final String text;
-    final String foto;
-    final Date date;
-    final ru.lulka.models.Post.Subject subject;
 
-    public Ad(String text, String foto, ru.lulka.models.Post.Subject subject) {
+    @Id
+    private String id;
+    private String userName;
+    private String text;
+    private String foto;
+    private Date date;
+    private Subject subject;
+
+    public Ad(String text, String foto, Subject subject) {
         this.id = UUID.randomUUID().toString();
         this.userName = "GUEST";
         this.date = new Date();
@@ -35,7 +34,7 @@ public class Ad {
         this.text = text;
     }
 
-    public Ad(String text, String userName, String foto, ru.lulka.models.Post.Subject subject) {
+    public Ad(String text, String userName, String foto, Subject subject) {
         this.id = UUID.randomUUID().toString();
         this.date = new Date();
         this.foto = foto;
@@ -44,7 +43,7 @@ public class Ad {
         this.userName = userName;
     }
 
-    public Ad(String id, String userName, String text, String foto, Date date, ru.lulka.models.Post.Subject subject) {
+    public Ad(String id, String userName, String text, String foto, Date date, Subject subject) {
         this.id = id;
         this.userName = userName;
         this.text = text;

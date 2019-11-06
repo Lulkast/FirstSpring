@@ -26,11 +26,11 @@ public class UserControllerImplement implements UserController {
 
     @GetMapping ("/user")
     @Override
-    public String getUserById(@RequestParam("UUID") String id, Model model) throws Exception {
+    public String getById(@RequestParam("UUID") String id, Model model) throws Throwable{
         if (Strings.isNullOrEmpty(id)) throw new WrongArgumentException("Null cant be applied");
         try {
             UUID uuid = UUID.fromString(id);
-            final User user = service.getByUUID(uuid);
+            final User user = service.getById(id);
             System.out.println(user.toString());
             model.addAttribute("user", user);
             return "users/user";
@@ -41,10 +41,11 @@ public class UserControllerImplement implements UserController {
 
     @PostMapping ("/user")
     @Override
-    public String saveUser(@RequestParam("userName") String userName, @RequestParam("password") String password, Model model) throws Exception {
+    public String save(@RequestParam("userName") String userName, @RequestParam("password") String password, Model model)
+            throws Throwable {
 
         try {
-            User user = new User(UUID.randomUUID(), userName, password);
+            User user = new User(UUID.randomUUID().toString(), userName, password);
             User saved = service.save(user);
             model.addAttribute("user", saved);
             return "users/user";
@@ -59,8 +60,8 @@ public class UserControllerImplement implements UserController {
 
     @GetMapping("/user/all")
     @Override
-    public String getAllUsers(Model model) throws Exception {
-        final Set<User> allUsers = service.getAll();
+    public String getAll(Model model) throws Throwable {
+        final Iterable <User> allUsers = service.getAll();
         model.addAttribute("users", allUsers);
         return "users/usersAll";
     }

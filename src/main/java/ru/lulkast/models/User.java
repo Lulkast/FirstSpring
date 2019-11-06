@@ -1,12 +1,15 @@
 package ru.lulkast.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
+@Entity
+@Table(name = "UserNeo")
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -14,18 +17,19 @@ import java.util.UUID;
 public class User {
     private static final long serialVersionUID = 1L;
 
-    private UUID uuid;
+    @Id
+    private String id;
     private String userName;
     private String password;
 
-    public User(UUID uuid, String userName, String password) {
-        this.uuid = uuid;
+    public User(String id, String userName, String password) {
+        this.id = id;
         this.userName = userName;
         this.password = password;
     }
 
     public User( String userName, String password) {
-        this.uuid = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.userName = userName;
         this.password = password;
     }
